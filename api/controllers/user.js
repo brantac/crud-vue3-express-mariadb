@@ -1,4 +1,5 @@
-const db = require('../models');
+const userModel = require('../models/user');
+
 export function getAllUsers() {
-    return;
+    return userModel.getAllUsers();
 }
