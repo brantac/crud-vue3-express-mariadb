@@ -1,0 +1,4 @@
+"João Carlos","joao_carlos@gmail.com","12345678912","joao",\N
+"Janaína","janaina@gmail.com","12345678913","janaina",\N
+"Thiago","thiago@gmail.com","12345678915","thiago",1
+"Marta","marta@gmail.com","12345678916","marta",2
