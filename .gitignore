@@ -5,3 +5,6 @@ yarn.lock
 # Logs
 logs
 *.log
+
+# MariaDB data folder
+/db/data
