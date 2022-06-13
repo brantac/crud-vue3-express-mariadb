@@ -18,6 +18,8 @@ services:
     volumes:
       - ./frontend:/app
       - /app/node_modules
+    stdin_open: true
+    tty: true
   db:
     build: ./db
     # image: mariadb:10.7-focal
