@@ -1,0 +1,32 @@
+# version: '3.8'
+services:
+  api:
+    build: ./api
+    depends_on:
+      - db
+    container_name: api_c
+    ports:
+      - "4000:4000"
+    volumes:
+      - ./api:/app
+      - /app/node_modules
+  frontend:
+    build: ./frontend
+    container_name: frontend_c
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+  db:
+    build: ./db
+    # image: mariadb:10.7-focal
+    container_name: db_c
+    # environment:
+    #   - MARIADB_ROOT_PASSWORD=secret
+    #   - MARIADB_USER=guest
+    #   - MARIADB_PASSWORD=guest
+    #   - MARIADB_DATABASE=app
+    volumes:
+      - ./db/data:/var/lib/mysql
+      # - ./db/scripts:/docker-entrypoint-initdb.d
