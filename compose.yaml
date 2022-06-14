@@ -10,6 +10,9 @@ services:
     volumes:
       - ./api:/app
       - /app/node_modules
+    networks:
+      - frontend
+      - backend
   frontend:
     build: ./frontend
     container_name: frontend_c
@@ -20,6 +23,8 @@ services:
       - /app/node_modules
     stdin_open: true
     tty: true
+    networks:
+      - frontend
   db:
     build: ./db
     # image: mariadb:10.7-focal
@@ -32,3 +37,8 @@ services:
     volumes:
       - ./db/data:/var/lib/mysql
       # - ./db/scripts:/docker-entrypoint-initdb.d
+    networks:
+      - backend
+networks:
+  frontend:
+  backend:
