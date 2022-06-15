@@ -9,6 +9,8 @@ require('dotenv').config();
 const app = express();
 
 app.use(cors());
+// Parse request body as JSON
+// and add it to req.body
 app.use(express.json());
 app.use(
     express.urlencoded({
