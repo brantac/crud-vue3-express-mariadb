@@ -1,4 +1,5 @@
 const db = require('./db');
+const { isEmail } = require('validator');
 
 async function getAllUsers() {
     let query = 'SELECT * FROM `user`';
@@ -19,7 +20,16 @@ async function updateUser(id, fields) {
     let rows = await db(query, [fields, id]);
 }
 
+async function createUser(body) {
+    const { email,password } = body;
+    if (!isEmail(email)) return {msg: 'Invalid email'};
+
+    if (password.length < 6) return {msg: 'Password must be at least 6 characters'};
+    
+    return {msg: body}
+}
 module.exports = {
     getAllUsers,
-    getAllUsersAddress
+    getAllUsersAddress,
+    createUser
 };

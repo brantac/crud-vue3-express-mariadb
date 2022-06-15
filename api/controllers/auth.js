@@ -1,8 +1,9 @@
-async function signup (req, res) {
-    const {email, password} = req.body
+const {createUser} = require('../models/user')
 
-    console.log(email, password)
-    res.send('user signed up')
+async function signup (req, res) {
+    const user = await createUser(req.body)
+
+    res.json(user)
 }
 async function login (req, res) {
     const {email, password} = req.body
