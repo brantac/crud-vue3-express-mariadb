@@ -1,3 +1,4 @@
+const bcrypt = require('bcrypt');
 const db = require('./db');
 const { validateUserInput } = require('../validation/userValidator');
 
@@ -27,7 +28,15 @@ async function createUser(body) {
         return { errors };
     }
 
-    return {msg: 'User created'};
+    // 1. Encrypt password
+    let { password } = body;
+    const salt = await bcrypt.genSalt(10);
+    password = await bcrypt.hash(password, salt);
+    body.password = password;
+    // 2. Create user
+
+    return { body };
+    // return {msg: 'User created'};
 }
 module.exports = {
     getAllUsers,
