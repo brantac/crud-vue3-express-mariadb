@@ -1,18 +1,13 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import Navbar from './components/Navbar.vue';
 
 const isLoggedIn = ref(false);
 </script>
 
 <template>
   <header class="navbar">
-    <nav>
-      <ul class="nav-items">
-        <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/user/:id">User</router-link></li>
-        <li><router-link to="/users">Users</router-link></li>
-      </ul>
-    </nav>
+    <Navbar />
     <!-- Login button -->
     <router-link class="login-btn" v-if="!isLoggedIn" to="/login">Login</router-link>
     <!-- /Login button -->
@@ -38,23 +33,8 @@ html, body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  background: #9e30b7;
+  background: rgb(255, 249, 254);
   padding: 2rem 1rem;
-}
-nav ul {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  gap: 1rem;
-}
-nav a {
-  color: white;
-  text-decoration: none;
-  font-size: 1.2rem;
-  font-weight: bold;
 }
 .login-btn {
   text-decoration: none;
