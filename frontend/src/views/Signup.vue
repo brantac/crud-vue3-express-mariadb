@@ -25,9 +25,11 @@
 
 <script setup lang="ts">
 import {ref} from 'vue'
+import { useRouter } from 'vue-router';
 const name = ref()
 const email = ref()
 const password = ref()
+const router = useRouter();
 
 const signup = async function (e: Event) {
     e.preventDefault()    
@@ -45,7 +47,14 @@ const signup = async function (e: Event) {
         body: JSON.stringify(user)
     })
         const data = await response.json()
-        console.log(data)
+
+        if (data.error) {
+            console.log(data.error)
+        }
+        else {
+            console.log(data)
+            router.push({name: 'user', params: {id: data.user_id}});
+        }
     } catch (error) {
         console.log("Error: ", error)
     }
@@ -87,5 +96,6 @@ form {
     border-radius: 0.25rem;
     font-size: 1.2rem;
     font-weight: bold;
+    cursor: pointer;
 }
 </style>
