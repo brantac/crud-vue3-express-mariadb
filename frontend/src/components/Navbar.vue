@@ -2,10 +2,13 @@
     <nav>
       <ul class="nav-items">
         <li><router-link to="/">Home</router-link></li>
-        <li><router-link to="/user/:id">User</router-link></li>
+        <li><router-link to="/user/:id">Profile</router-link></li>
         <li><router-link to="/users">Users</router-link></li>
       </ul>
     </nav>
+    <!-- Login button -->
+    <router-link class="login-btn" to="/login">Login</router-link>
+    <!-- /Login button -->
 </template>
 
 <script setup lang="ts">
