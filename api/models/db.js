@@ -11,10 +11,13 @@ async function query(query, values = '') {
             database: process.env.MARIADB_DATABASE,
         });
         const [rows, fields] = await connection.execute(query, values);
-        return rows;        
+        return rows;
     } catch (error) {
-        console.error("Error while trying to connect to the server: ");
-        return [];
+        if('errno' in error && error.errno === 1062) {
+            if (error.sqlMessage.includes('email')) {
+                return {error: {email: 'Email já existe'}};
+            }
+        };
     }
 }
 
