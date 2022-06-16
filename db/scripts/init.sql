@@ -19,7 +19,8 @@ CREATE TABLE IF NOT EXISTS `user` (
     `name` VARCHAR(150) NOT NULL,
     `email` VARCHAR(150) NOT NULL UNIQUE,
     `cpf` CHAR(11) UNIQUE,
-    `password` VARCHAR(30) NOT NULL,
+    `pis` CHAR(11) UNIQUE,
+    `password` VARCHAR(70) NOT NULL,
     `address_id` INT,
     CONSTRAINT `pk_user_id` PRIMARY KEY (`user_id`),
     CONSTRAINT `fk_user_address_id`
