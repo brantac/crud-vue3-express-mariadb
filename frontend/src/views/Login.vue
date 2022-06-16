@@ -22,6 +22,10 @@
 
 <script setup lang="ts">
 import {ref} from 'vue'
+import { useRouter } from 'vue-router';
+
+
+const router = useRouter();
 const email = ref()
 const password = ref()
 
@@ -40,7 +44,13 @@ const login = async function (e: Event) {
         body: JSON.stringify(user)
     })
         const data = await response.json()
-        console.log(data)
+        if (data.error) {
+            console.log(data.error)
+        }
+        else {
+            console.log(data)
+            router.push({name: 'user', params: {id: data.user_id}});
+        }
     } catch (error) {
         console.log("Error: ", error)
     }
@@ -81,6 +91,7 @@ form {
     border-radius: 0.25rem;
     font-size: 1.2rem;
     font-weight: bold;
+    cursor: pointer;
 }
 .create-account-btn {
     color:#9e30b7;
