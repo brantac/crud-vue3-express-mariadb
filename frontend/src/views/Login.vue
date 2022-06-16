@@ -15,7 +15,7 @@
             <button class="submit-login-btn" @click="" >
                 Login    
             </button>
-            <a href="/signup" class="create-account-btn">Create an account</a>
+            <router-link class="create-account-btn" to="/signup">Create an account</router-link>
         </form>
     </main>
 </template>
