@@ -6,18 +6,16 @@
         >
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" v-model="email" />
+                <input type="email" id="email" name="email" />
             </div>
             <div class="input-group">
-                <label for="email">Password</label>
-                <input type="email" id="email" v-model="email" />
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" />
             </div>
-            <button
-                class="submit-login-btn"
-                @click="login"
-            >
+            <button class="submit-login-btn" @click="" >
                 Login    
             </button>
+            <a href="/signup" class="create-account-btn">Create an account</a>
         </form>
     </main>
 </template>
@@ -29,5 +27,39 @@
 <style scoped>
 .login-section {
     padding: 0 1rem;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+.input-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+.input-group label {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.input-group input {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 0.25rem;
+}
+.submit-login-btn {
+    background: #9e30b7;
+    color: white;
+    border: 1px solid white;
+    padding: 1rem 2rem;
+    border-radius: 0.25rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+.create-account-btn {
+    color:#9e30b7;
 }
 </style>
