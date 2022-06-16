@@ -34,9 +34,14 @@ async function createUser(body) {
     password = await bcrypt.hash(password, salt);
     body.password = password;
     // 2. Create user
+    const query = 'INSERT INTO `user` (name, email, password) VALUES (?, ?, ?)';
+    const rows = await db(query, [body.name, body.email, body.password]);
 
-    return { body };
-    // return {msg: 'User created'};
+    if ('affectedRows' in rows && rows.affectedRows === 1) {
+        return { ...body, user_id: rows.insertId };
+    }
+
+    return rows;
 }
 module.exports = {
     getAllUsers,
