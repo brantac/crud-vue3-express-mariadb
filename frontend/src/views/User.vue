@@ -1,18 +1,39 @@
 <template>
-    <div>
-        <h1>{{ userId }}</h1>
-    </div>
+    <main class="user-section">
+        <h1 v-if="user.name">Welcome, {{ user.name }}</h1>
+    </main>
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
+import { computed, ref, watchEffect } from 'vue';
 import { useRoute } from 'vue-router';
 
 const route = useRoute();
+const user = ref({})
 
 const userId = computed(() => {
     return route.params.id;
 });
+watchEffect(async () => {
+    await fetchUser();
+});
+async function fetchUser() {
+    try {
+        const response = await fetch(`http://localhost:4000/user/${userId.value}`);
+        const data = await response.json();
+        
+        if (data.error) {
+            console.log(data.error);
+        }
+        else {
+            console.log(data);
+            user.value = data;
+        }
+        
+    } catch (error) {
+        console.log("Erro ao carregar informações do usuário: ", error)
+    }
+}
 </script>
 
 <style scoped>
