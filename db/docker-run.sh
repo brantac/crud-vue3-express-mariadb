@@ -1,0 +1,1 @@
+docker run --rm --name db_test_c -p 3306:3306 -v $(pwd)/data:/var/lib/mysql db:test
