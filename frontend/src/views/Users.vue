@@ -10,7 +10,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import { UserService, IUser } from '../data/UserService';
+import { UserService, IUser } from '../services/UserService';
 
 const users = ref<IUser[]>([]);
 
