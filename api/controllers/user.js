@@ -5,6 +5,12 @@ async function getAllUsers(req, res) {
     res.json(rows);
 }
 
+async function getUserById(req, res) {
+    let id = req.params.id;
+    let rows = await userModel.getUserById(id);
+    res.json(rows);
+}
+
 async function getAllUsersAddress(req, res) {
     let rows = await userModel.getAllUsersAddress();
     res.json(rows);
@@ -12,5 +18,6 @@ async function getAllUsersAddress(req, res) {
 
 module.exports = {
     getAllUsers,
-    getAllUsersAddress
+    getAllUsersAddress,
+    getUserById
 };

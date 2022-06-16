@@ -8,6 +8,12 @@ async function getAllUsers() {
     return rows;
 }
 
+async function getUserById(id) {
+    let query = 'SELECT * FROM `user` WHERE user_id = ?';
+    let rows = await db(query, [id]);
+    return rows[0];
+}
+
 async function getAllUsersAddress() {
     let query = '' +
     'SELECT u.user_id, u.name, a.city ' +
@@ -46,5 +52,6 @@ async function createUser(body) {
 module.exports = {
     getAllUsers,
     getAllUsersAddress,
-    createUser
+    createUser,
+    getUserById
 };

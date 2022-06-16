@@ -8,6 +8,9 @@ router.get('/users', user.getAllUsers)
 // Get users with address
 // router.get('/users-address', user.getAllUsersAddress)
 
+// GET user
+router.get('/user/:id', user.getUserById)
+
 // Update user
 // router.put('/users/:id', user.updateUser)
 
