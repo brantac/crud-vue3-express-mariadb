@@ -28,16 +28,16 @@ CREATE TABLE IF NOT EXISTS `user` (
 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8;
 
 
--- Load address data from .txt file
-LOAD DATA LOCAL INFILE '/app/address.txt' INTO TABLE `address`
-FIELDS TERMINATED BY ','
-OPTIONALLY ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-(street, number, complement, zipcode, city, state);
+-- -- Load address data from .txt file
+-- LOAD DATA LOCAL INFILE '/app/address.txt' INTO TABLE `address`
+-- FIELDS TERMINATED BY ','
+-- OPTIONALLY ENCLOSED BY '"'
+-- LINES TERMINATED BY '\n'
+-- (street, number, complement, zipcode, city, state);
 
--- Load user data from .txt file
-LOAD DATA LOCAL INFILE '/app/user.txt' INTO TABLE `user`
-FIELDS TERMINATED BY ','
-OPTIONALLY ENCLOSED BY '"'
-LINES TERMINATED BY '\n'
-(name, email, cpf, password, address_id);
+-- -- Load user data from .txt file
+-- LOAD DATA LOCAL INFILE '/app/user.txt' INTO TABLE `user`
+-- FIELDS TERMINATED BY ','
+-- OPTIONALLY ENCLOSED BY '"'
+-- LINES TERMINATED BY '\n'
+-- (name, email, cpf, password, address_id);
