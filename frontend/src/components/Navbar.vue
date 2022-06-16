@@ -6,9 +6,12 @@
         <li><router-link to="/users">Users</router-link></li>
       </ul>
     </nav>
-    <!-- Login button -->
-    <router-link class="login-btn" to="/login">Login</router-link>
-    <!-- /Login button -->
+    <!-- Login/Signup button -->
+    <div class="login-signup-btns">
+        <router-link class="signup-btn" to="/signup">Signup</router-link>
+        <router-link class="login-btn" to="/login">Login</router-link>
+    </div>
+    <!-- /Login/Signup button -->
 </template>
 
 <script setup lang="ts">
@@ -30,5 +33,25 @@ nav a {
   text-decoration: none;
   font-size: 1.2rem;
   font-weight: bold;
+}
+.login-signup-btns {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+}
+.login-btn {
+  text-decoration: none;
+  background: #9e30b7;
+  color: white;
+  border: 1px solid white;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.signup-btn {
+    color: #9e30b7;
 }
 </style>
