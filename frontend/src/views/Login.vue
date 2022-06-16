@@ -6,13 +6,13 @@
         >
             <div class="input-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" />
+                <input ref="email" type="email" id="email" name="email" />
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input type="password" id="password" name="password" />
+                <input ref="password" type="password" id="password" name="password" />
             </div>
-            <button class="submit-login-btn" @click="" >
+            <button class="submit-login-btn" @click="login" >
                 Login    
             </button>
             <router-link class="create-account-btn" to="/signup">Create an account</router-link>
@@ -21,7 +21,30 @@
 </template>
 
 <script setup lang="ts">
+import {ref} from 'vue'
+const email = ref()
+const password = ref()
 
+const login = async function (e: Event) {
+    e.preventDefault()    
+    const user = {
+        email: email.value.value,
+        password: password.value.value
+    }
+    try {
+        const response = await fetch('http://localhost:4000/signup', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(user)
+    })
+        const data = await response.json()
+        console.log(data)
+    } catch (error) {
+        console.log("Error: ", error)
+    }
+}
 </script>
 
 <style scoped>
