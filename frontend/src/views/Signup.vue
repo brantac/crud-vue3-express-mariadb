@@ -6,15 +6,15 @@
         >
             <div class="input-group">
                 <label for="name">Name</label>
-                <input ref="name" type="name" id="name" name="name" />
+                <input ref="name" type="name" id="name" name="name" required/>
             </div>
             <div class="input-group">
                 <label for="email">Email</label>
-                <input ref="email" type="email" id="email" name="email" />
+                <input ref="email" type="email" id="email" name="email" required />
             </div>
             <div class="input-group">
                 <label for="password">Password</label>
-                <input ref="password" type="password" id="password" name="password" />
+                <input ref="password" type="password" id="password" name="password" required/>
             </div>
             <button class="submit-login-btn" @click="signup" >
                 Create account    
@@ -36,7 +36,6 @@ const signup = async function (e: Event) {
         email: email.value.value,
         password: password.value.value
     }
-    console.log(user)
     try {
         const response = await fetch('http://localhost:4000/signup', {
         method: 'POST',
